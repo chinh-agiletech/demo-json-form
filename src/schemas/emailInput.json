@@ -1,0 +1,38 @@
+{
+    "dataSchema": {
+        "type": "object",
+        "properties": {
+            "value": {
+                "type": "string",
+                "format": "email"
+            }
+        },
+        "required": [
+            "value"
+        ]
+    },
+    "uiSchema": {
+        "type": "Control",
+        "inputType": "email",
+        "validation": {
+            "required": true,
+            "format": "email"
+        },
+        "styling": {
+            "width": "100%",
+            "padding": "8px",
+            "border": "1px solid #ccc",
+            "borderRadius": "4px",
+            "fontSize": "14px"
+        },
+        "labelStyle": {
+            "display": "block",
+            "marginBottom": "8px",
+            "fontWeight": "bold",
+            "color": "#333",
+            "fontSize": "14px",
+            "textAlign": "left"
+        },
+        "placeholder": "Enter your email address"
+    }
+}

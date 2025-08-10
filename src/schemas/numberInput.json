@@ -1,0 +1,40 @@
+{
+    "dataSchema": {
+        "type": "object",
+        "properties": {
+            "value": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 120
+            }
+        },
+        "required": [
+            "value"
+        ]
+    },
+    "uiSchema": {
+        "type": "Control",
+        "inputType": "number",
+        "validation": {
+            "required": true,
+            "minimum": 0,
+            "maximum": 120
+        },
+        "styling": {
+            "width": "100%",
+            "padding": "8px",
+            "border": "1px solid #ccc",
+            "borderRadius": "4px",
+            "fontSize": "14px"
+        },
+        "labelStyle": {
+            "display": "block",
+            "marginBottom": "5px",
+            "fontWeight": "bold",
+            "color": "#333",
+            "fontSize": "14px",
+            "textAlign": "left"
+        },
+        "placeholder": "Enter age (0-120)"
+    }
+}

@@ -1,0 +1,75 @@
+{
+    "formSchema": {
+        "type": "object",
+        "properties": {
+            "name": {
+                "type": "string",
+                "title": "Full Name"
+            },
+            "email": {
+                "type": "string",
+                "format": "email",
+                "title": "Email Address"
+            },
+            "birthDate": {
+                "type": "string",
+                "format": "date",
+                "title": "Birth Date"
+            },
+            "age": {
+                "type": "number",
+                "title": "Age"
+            }
+        },
+        "required": [
+            "name",
+            "email"
+        ]
+    },
+    "uiSchema": {
+        "type": "HorizontalLayout",
+        "elements": [
+            {
+                "type": "Control",
+                "label": "Full Name",
+                "scope": "#/properties/name",
+                "componentType": "text"
+            },
+            {
+                "type": "Control",
+                "label": "Email",
+                "scope": "#/properties/email",
+                "componentType": "email"
+            }
+        ]
+    },
+    "uiSchemaVertical": {
+        "type": "VerticalLayout",
+        "elements": [
+            {
+                "type": "Control",
+                "label": "Full Name",
+                "scope": "#/properties/name",
+                "componentType": "text"
+            },
+            {
+                "type": "Control",
+                "label": "Email",
+                "scope": "#/properties/email",
+                "componentType": "email"
+            },
+            {
+                "type": "Control",
+                "label": "Birth Date",
+                "scope": "#/properties/birthDate",
+                "componentType": "date"
+            },
+            {
+                "type": "Control",
+                "label": "Age",
+                "scope": "#/properties/age",
+                "componentType": "number"
+            }
+        ]
+    }
+}

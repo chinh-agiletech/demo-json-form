@@ -1,0 +1,37 @@
+{
+    "dataSchema": {
+        "type": "object",
+        "properties": {
+            "value": {
+                "type": "string",
+                "format": "date"
+            }
+        },
+        "required": [
+            "value"
+        ]
+    },
+    "uiSchema": {
+        "type": "Control",
+        "inputType": "date",
+        "validation": {
+            "required": true,
+            "format": "date"
+        },
+        "styling": {
+            "width": "100%",
+            "padding": "8px",
+            "border": "1px solid #ccc",
+            "borderRadius": "4px",
+            "fontSize": "14px"
+        },
+        "labelStyle": {
+            "display": "block",
+            "marginBottom": "5px",
+            "fontWeight": "bold",
+            "color": "#333",
+            "fontSize": "14px",
+            "textAlign": "left"
+        }
+    }
+}
