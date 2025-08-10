@@ -1,70 +1,121 @@
-# Getting Started with Create React App
+# Dynamic Form System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hệ thống form động được xây dựng với React, cho phép tạo và tùy chỉnh các form thông qua cấu hình JSON schema.
 
-## Available Scripts
+## Cài đặt và chạy
 
-In the project directory, you can run:
+### `npm install`
+Cài đặt các dependencies cần thiết.
 
 ### `npm start`
+Chạy ứng dụng ở chế độ development.\
+Mở [http://localhost:3000](http://localhost:3000) để xem trong browser.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Hướng dẫn Custom Form
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Tạo Schema mới
+
+Tạo file schema trong `src/schemas/`, ví dụ `phoneInput.json`:
+
+```json
+{
+    "dataSchema": {
+        "type": "object",
+        "properties": {
+            "value": { "type": "string" }
+        },
+        "required": ["value"]
+    },
+    "uiSchema": {
+        "type": "Control",
+        "inputType": "tel",
+        "validation": {
+            "required": true,
+            "pattern": "^[0-9]{10,11}$"
+        },
+        "styling": {
+            "width": "100%",
+            "padding": "12px",
+            "border": "1px solid #ddd",
+            "borderRadius": "6px",
+            "fontSize": "16px"
+        },
+        "labelStyle": {
+            "display": "block",
+            "marginBottom": "8px",
+            "fontWeight": "bold",
+            "color": "#333",
+            "fontSize": "14px",
+            "textAlign": "left"
+        },
+        "placeholder": "Nhập số điện thoại"
+    }
+}
+```
+
+## Cấu hình Schema
+
+### uiSchema - Các thuộc tính chính:
+- `inputType`: text, email, password, tel, number, date
+- `validation`: 
+  - `required`: true/false
+  - `minLength/maxLength`: Độ dài
+  - `pattern`: Regex
+  - `minimum/maximum`: Giá trị min/max (số)
+- `styling`: CSS cho input
+- `labelStyle`: CSS cho label
+- `placeholder`: Placeholder text
+
+### Validation Examples:
+
+**Text Input:**
+```json
+"validation": {
+  "required": true,
+  "minLength": 3,
+  "maxLength": 50
+}
+```
+
+**Email Input:**
+```json
+"validation": {
+  "required": true,
+  "format": "email"
+}
+```
+
+**Number Input:**
+```json
+"validation": {
+  "required": true,
+  "minimum": 18,
+  "maximum": 100
+}
+```
+
+**Pattern Validation:**
+```json
+"validation": {
+  "required": true,
+  "pattern": "^[0-9]{10,11}$"
+}
+```
+
+## Các Scripts khác
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Chạy test runner ở chế độ interactive watch mode.\
+Xem thêm về [running tests](https://facebook.github.io/create-react-app/docs/running-tests).
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Build ứng dụng cho production vào thư mục `build`.\
+Tối ưu hóa và minify code để có performance tốt nhất.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Tài liệu tham khảo
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started)
+- [React documentation](https://reactjs.org/)
+- [JSON Schema](https://json-schema.org/)
