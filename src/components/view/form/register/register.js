@@ -94,7 +94,7 @@ const RegisterForm = ({ onSwitchForm }) => {
         <h2 style={{ 
           textAlign: 'center', 
           marginBottom: '30px',
-          color: '#333',
+          color: '#fff',
           fontSize: '28px'
         }}>
           Create Account
@@ -105,7 +105,7 @@ const RegisterForm = ({ onSwitchForm }) => {
             background: 'white', 
             padding: '40px', 
             borderRadius: '12px', 
-            maxWidth: '500px',
+            width: '400px',
             margin: '0 auto',
             boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
             border: '1px solid #e1e5e9'
@@ -117,7 +117,7 @@ const RegisterForm = ({ onSwitchForm }) => {
               <button 
                 type="submit" 
                 style={{
-                  background: '#28a745',
+                  background: '#007bff',
                   color: 'white',
                   padding: '12px 30px',
                   border: 'none',

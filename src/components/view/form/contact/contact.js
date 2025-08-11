@@ -122,7 +122,7 @@ const ContactForm = ({ onSwitchForm }) => {
           textAlign: 'center',
           marginBottom: '30px',
           color: '#666',
-          maxWidth: '600px',
+          maxWidth: '400px',
           margin: '0 auto 30px'
         }}>
           We'd love to hear from you! Please fill out the form below and we'll get back to you as soon as possible.
@@ -133,7 +133,7 @@ const ContactForm = ({ onSwitchForm }) => {
             background: 'white', 
             padding: '40px', 
             borderRadius: '12px', 
-            maxWidth: '600px',
+            maxWidth: '400px',
             margin: '0 auto',
             boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
             border: '1px solid #e1e5e9'

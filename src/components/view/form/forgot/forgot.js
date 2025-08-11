@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
 import EmailInputComponent from '../../../ui/EmailInputComponent';
-import TextInputComponent from '../../../ui/TextInputComponent';
 
 // Import schemas
 import emailInputSchema from '../../../../schemas/emailInput.json';
-import textInputSchema from '../../../../schemas/textInput.json';
 
-const LoginForm = ({ onSwitchForm }) => {
-  const [loginData, setLoginData] = useState({
-    email: '',
-    password: ''
+const ForgotPasswordForm = ({ onSwitchForm }) => {
+  const [forgotData, setForgotData] = useState({
+    email: ''
   });
 
   const [touchedFields, setTouchedFields] = useState({});
 
   const handleInputChange = (field, value) => {
-    setLoginData(prev => ({
+    setForgotData(prev => ({
       ...prev,
       [field]: value
     }));
@@ -32,56 +29,40 @@ const LoginForm = ({ onSwitchForm }) => {
     e.preventDefault();
     
     // Validate all fields before submit
-    const allTouched = {
-      email: true,
-      password: true
-    };
-    setTouchedFields(allTouched);
+    setTouchedFields({ email: true });
 
     // Check if form is valid
-    const isEmailValid = loginData.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(loginData.email);
-    const isPasswordValid = loginData.password && loginData.password.length >= 6;
+    const isEmailValid = forgotData.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(forgotData.email);
 
-    if (isEmailValid && isPasswordValid) {
-      console.log('Login Data Submitted:', loginData);
-      alert('Login successful! Check the console for data.');
+    if (isEmailValid) {
+      console.log('Forgot Password Requested for:', forgotData.email);
+      alert(`Password reset link sent to ${forgotData.email}. Please check your inbox.`);
       
-      // TODO: Send data to API
-      // Example: 
-      // fetch('/api/login', {
+      // TODO: Send request to forgot password API
+      // Example:
+      // fetch('/api/forgot-password', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(loginData)
+      //   body: JSON.stringify({ email: forgotData.email })
       // });
+      
+      // Optionally redirect back to login after successful submission
+      // onSwitchForm('login');
     } else {
-      alert('Please fill in all required fields correctly.');
-    }
-  };
-
-  // Password schema (modified from text input for password)
-  const passwordSchema = {
-    ...textInputSchema,
-    uiSchema: {
-      ...textInputSchema.uiSchema,
-      inputType: 'password',
-      placeholder: 'Enter your password',
-      validation: {
-        required: true,
-        minLength: 6
-      }
+      alert('Please enter a valid email address to reset your password.');
     }
   };
 
   return (
-    <div className="login-container">
-      <div className="login-form">
+    <div className="forgot-container">
+      <div className="forgot-form">
         <h2 style={{ 
           textAlign: 'center', 
           marginBottom: '30px',
           color: '#fff',
           fontSize: '28px'
         }}>
-          Login
+          Forgot Password
         </h2>
         
         <form onSubmit={handleSubmit}>
@@ -96,9 +77,17 @@ const LoginForm = ({ onSwitchForm }) => {
           }}>
             
             <div style={{ marginBottom: '20px' }}>
+              <p style={{ 
+                fontSize: '14px', 
+                color: '#666', 
+                marginBottom: '20px',
+                textAlign: 'center'
+              }}>
+                Enter your email address and we'll send you a link to reset your password.
+              </p>
               <EmailInputComponent
                 label="Email"
-                value={loginData.email}
+                value={forgotData.email}
                 onChange={handleInputChange}
                 schema={emailInputSchema}
                 fieldName="email"
@@ -106,42 +95,8 @@ const LoginForm = ({ onSwitchForm }) => {
                 onTouch={handleFieldTouch}
               />
             </div>
-
-            <div style={{ marginBottom: '20px' }}>
-              <TextInputComponent
-                label="Password"
-                value={loginData.password}
-                onChange={handleInputChange}
-                schema={passwordSchema}
-                fieldName="password"
-                isTouched={touchedFields.password}
-                onTouch={handleFieldTouch}
-              />
-            </div>
             
-            <div style={{ 
-              textAlign: 'right', 
-              marginBottom: '20px',
-              fontSize: '14px'
-            }}>
-              <a 
-                href="#" 
-                onClick={(e) => {
-                  e.preventDefault();
-                  // Switch to forgot password form
-                  onSwitchForm('forgot');
-                }}
-                style={{ 
-                  color: '#007bff', 
-                  textDecoration: 'none',
-                  cursor: 'pointer'
-                }}
-              >
-                Forgot Password?
-              </a>
-            </div>
-            
-            <div style={{ textAlign: 'center' }}>
+            <div style={{ textAlign: 'center', marginTop: '30px' }}>
               <button 
                 type="submit" 
                 style={{
@@ -159,7 +114,7 @@ const LoginForm = ({ onSwitchForm }) => {
                 onMouseOver={(e) => e.target.style.background = '#0056b3'}
                 onMouseOut={(e) => e.target.style.background = '#007bff'}
               >
-                Login
+                Reset Password
               </button>
             </div>
 
@@ -169,12 +124,12 @@ const LoginForm = ({ onSwitchForm }) => {
               fontSize: '14px',
               color: '#666'
             }}>
-              Don't have an account? 
+              Remember your password? 
               <a 
                 href="#" 
                 onClick={(e) => {
                   e.preventDefault();
-                  onSwitchForm('register');
+                  onSwitchForm('login');
                 }}
                 style={{ 
                   color: '#007bff', 
@@ -183,7 +138,7 @@ const LoginForm = ({ onSwitchForm }) => {
                   cursor: 'pointer'
                 }}
               >
-                Sign up
+                Back to Login
               </a>
             </div>
           </div>
@@ -193,4 +148,4 @@ const LoginForm = ({ onSwitchForm }) => {
   );
 };
 
-export default LoginForm;
+export default ForgotPasswordForm;

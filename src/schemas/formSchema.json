@@ -63,12 +63,6 @@
                 "label": "Birth Date",
                 "scope": "#/properties/birthDate",
                 "componentType": "date"
-            },
-            {
-                "type": "Control",
-                "label": "Age",
-                "scope": "#/properties/age",
-                "componentType": "number"
             }
         ]
     }
