@@ -6,7 +6,7 @@ import TextInputComponent from '../../../ui/TextInputComponent';
 import emailInputSchema from '../../../../schemas/emailInput.json';
 import textInputSchema from '../../../../schemas/textInput.json';
 
-const LoginForm = () => {
+const LoginForm = ({ onSwitchForm }) => {
   const [loginData, setLoginData] = useState({
     email: '',
     password: ''
@@ -148,11 +148,19 @@ const LoginForm = () => {
               color: '#666'
             }}>
               Don't have an account? 
-              <a href="#" style={{ 
-                color: '#007bff', 
-                textDecoration: 'none',
-                marginLeft: '5px'
-              }}>
+              <a 
+                href="#" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  onSwitchForm('register');
+                }}
+                style={{ 
+                  color: '#007bff', 
+                  textDecoration: 'none',
+                  marginLeft: '5px',
+                  cursor: 'pointer'
+                }}
+              >
                 Sign up
               </a>
             </div>

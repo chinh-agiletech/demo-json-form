@@ -51,7 +51,8 @@ const DateInputComponent = ({
         <div style={{ 
           color: '#dc3545', 
           fontSize: '12px', 
-          marginTop: '4px' 
+          marginTop: '4px',
+          textAlign: 'left'
         }}>
           {validationError}
         </div>
