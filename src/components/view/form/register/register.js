@@ -128,8 +128,8 @@ const RegisterForm = ({ onSwitchForm }) => {
                   fontWeight: '500',
                   transition: 'background-color 0.2s'
                 }}
-                onMouseOver={(e) => e.target.style.background = '#218838'}
-                onMouseOut={(e) => e.target.style.background = '#28a745'}
+                onMouseOver={(e) => e.target.style.background = '#2b81ddff'}
+                onMouseOut={(e) => e.target.style.background = '#2286f1ff'}
               >
                 Register
               </button>
