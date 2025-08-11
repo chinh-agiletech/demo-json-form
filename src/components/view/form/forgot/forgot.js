@@ -35,9 +35,12 @@ const ForgotPasswordForm = ({ onSwitchForm }) => {
     const isEmailValid = forgotData.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(forgotData.email);
 
     if (isEmailValid) {
-      console.log('Forgot Password Requested for:', forgotData.email);
+      console.log('Forgot Password Requested for:', forgotData);
       alert(`Password reset link sent to ${forgotData.email}. Please check your inbox.`);
-      
+
+      setForgotData({ email: '' });
+      setTouchedFields({});
+
       // TODO: Send request to forgot password API
       // Example:
       // fetch('/api/forgot-password', {

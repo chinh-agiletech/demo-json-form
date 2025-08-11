@@ -46,6 +46,13 @@ const LoginForm = ({ onSwitchForm }) => {
       console.log('Login Data Submitted:', loginData);
       alert('Login successful! Check the console for data.');
       
+      // Reset form after successful submission
+      setLoginData({
+        email: '',
+        password: ''
+      });
+      setTouchedFields({});
+      
       // TODO: Send data to API
       // Example: 
       // fetch('/api/login', {

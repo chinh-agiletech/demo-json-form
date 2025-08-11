@@ -51,7 +51,15 @@ const RegisterForm = ({ onSwitchForm }) => {
     if (isNameValid && isEmailValid && isBirthDateValid && isAgeValid) {
       console.log('Registration Data Submitted:', registerData);
       alert('Registration successful! Check the console for data.');
-      
+
+      setRegisterData({
+        name: '',
+        email: '',
+        birthDate: '',
+        age: ''
+      });
+      setTouchedFields({});
+
       // TODO: Send data to API
       // Example: 
       // fetch('/api/register', {
